@@ -35,21 +35,8 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() {
     return contentDocuments;
 }
 
-/**
-* Метод считывает поле max_responses для определения предельного
-* количества ответов на один запрос
-* @return
-*/
 
 int ConverterJSON::GetResponsesLimit() {
-    std::cout << "If you want to leave the number of requests equal to 5, type any keyboard" << std::endl;
-    std::cout << "If you want to change the number of requests, enter  No" << std::endl;
-    std::string requests;
-    std::cin >> requests;
-    if (requests == "No") {
-        std::cout << "Enter the number of requests" << std::endl;
-        std::cin >> config["max_responses"];
-    }
     int numberRequests = config["max_responses"];
     return numberRequests;
 }
@@ -65,16 +52,6 @@ std::vector<std::string> ConverterJSON::GetRequests() {
     std::vector<std::string> requests;
     int numberRequests = GetResponsesLimit();
     nlohmann::json req;
-    if (request == "Yes") {
-        while (numberRequests >= 0) {
-            if (numberRequests > 0) {
-                std::cout << "Enter your request" << std::endl;
-                std::cin >> request;
-                requests.push_back(request);
-                numberRequests--;
-            }
-            std::cout << "Request limit reached" << std::endl;
-        }
         std::ofstream fileRequest("requests.json");
         if (fileRequest.is_open()) {
             fileRequest.clear();
