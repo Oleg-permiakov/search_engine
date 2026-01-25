@@ -46,8 +46,6 @@ int ConverterJSON::GetResponsesLimit() {
 * @return возвращает список запросов из файла requests.json
 */
 std::vector<std::string> ConverterJSON::GetRequests() {
-    std::cout << "If you want to fill out requests from the program, type Yes" << std::endl;
-    std::cout << "If you filled out the request.json file, press any key" << std::endl;
     std::string request;
     std::vector<std::string> requests;
     int numberRequests = GetResponsesLimit();
