@@ -53,10 +53,10 @@ std::vector<std::string> ConverterJSON::GetRequests() {
         std::ofstream fileRequest("requests.json");
         if (fileRequest.is_open()) {
             fileRequest.clear();
-        }
         req = {"requests", requests};
         fileRequest << req;
         fileRequest.close();
+
     } else {
         std::ifstream fileRequest("requests.json");
         fileRequest >> req;
