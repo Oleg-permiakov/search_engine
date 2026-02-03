@@ -1,15 +1,11 @@
 #include <iostream>
-#include <fstream>
 #include <filesystem>
 #include <string>
-#include "nlohmann/json.hpp"
 #include "ConverterJSON.h"
 #include <vector>
 #include <exception>
-#include "../gtest_main/googletest/include/gtest/gtest.h"
 #include "invertedIndex.h"
 #include "searchServer.h"
-#include <map>
 
 
 int main() {

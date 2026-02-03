@@ -1,10 +1,7 @@
-#include <iostream>
-#include <fstream>
 #include <filesystem>
 #include <string>
-#include "../nlohmann_json/include/nlohmann/json.hpp"
 #include <vector>
-#include "../gtest_main/googletest/include/gtest/gtest.h"
+#include <gtest/gtest.h>
 #include "../src/invertedIndex.h"
 #include "../src/searchServer.h"
 

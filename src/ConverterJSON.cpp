@@ -5,7 +5,7 @@
 
 
 #include "ConverterJSON.h"
-#include "nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -25,11 +25,11 @@
 
 std::vector<std::string> ConverterJSON::GetTextDocuments() {
     nlohmann::json config;
-    std::ifstream file("\\search_engine\\config.json");
-    if (!std::filesystem::exists("\\search_engine\\config.json")) {
+    std::ifstream file("../config.json");
+    if (!std::filesystem::exists("../config.json")) {
         throw std::invalid_argument("config file is missing");
     }
-    file.open("\\search_engine\\config.json");
+    file.open("../config.json");
     file >> config;
     file.close();
     if (config["config"].empty()) {
@@ -61,7 +61,7 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() {
 
 int ConverterJSON::GetResponsesLimit() {
     nlohmann::json config;
-    std::ifstream file("\\search_engine\\config.json");
+    std::ifstream file("../config.json");
     file >> config;
     file.close();
     int numberRequests = config["max_responses"];
@@ -77,10 +77,10 @@ std::vector<std::string> ConverterJSON::GetRequests() {
     std::vector<std::string> requests;
     std::vector<std::string> queries_input;
     nlohmann::json req;
-    std::ofstream fileRequest("\\search_engine\\requests.json");
+    std::ifstream fileRequest("../requests.json");
     fileRequest >> req;
     fileRequest.close();
-    for (auto stringWord: req["requests"]) {
+    for (auto &stringWord: req["requests"]) {
         requests.push_back(stringWord);
     }
         std::set<std::string> words;
@@ -91,7 +91,6 @@ std::vector<std::string> ConverterJSON::GetRequests() {
             words.insert(word);
         }
     }
-    std::vector<std::string> queries_input;
     for (const auto &word: words) {
         queries_input.push_back(word);
     }
@@ -125,7 +124,7 @@ void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float> > >
         request = {{"result", requestSearh}, {strResult, relev}};
         answer = {"answers", request};
     }
-    std::ofstream fileAnswers("answers.json");
+    std::ofstream fileAnswers("../answers.json");
     if (fileAnswers.is_open()) {
         fileAnswers.close();
     }

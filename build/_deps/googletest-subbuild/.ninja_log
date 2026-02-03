@@ -1,0 +1,21 @@
+# ninja log v6
+4	59	7918189885026183	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	352716bc187b59d5
+4	59	7918189885026183	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	352716bc187b59d5
+60	12240	7918190006776708	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	9e2e0b599fe0e35c
+60	12240	7918190006776708	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	9e2e0b599fe0e35c
+12241	12301	7918190007401732	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	566621c11d0fe1f0
+12241	12301	7918190007401732	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	566621c11d0fe1f0
+12301	12356	7918190008026713	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	14425f7e7164e37
+12301	12356	7918190008026713	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	14425f7e7164e37
+12356	12410	7918190008495428	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	6685f333938e3390
+12356	12410	7918190008495428	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	6685f333938e3390
+12410	12466	7918190009120516	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	c86a0c5395017385
+12410	12466	7918190009120516	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	c86a0c5395017385
+12466	12522	7918190009589223	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	a64c0243e3fd163e
+12466	12522	7918190009589223	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	a64c0243e3fd163e
+12522	12575	7918190010218330	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	197184ea647a159f
+12522	12575	7918190010218330	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	197184ea647a159f
+12575	12647	7918190010843354	CMakeFiles/googletest-populate-complete	66f31ddeedc87a02
+12575	12647	7918190010843354	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	66f31ddeedc87a02
+12575	12647	7918190010843354	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate-complete	66f31ddeedc87a02
+12575	12647	7918190010843354	C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	66f31ddeedc87a02

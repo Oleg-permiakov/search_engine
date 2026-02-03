@@ -12,7 +12,9 @@ add_library(search_engine_lib
         src/invertedIndex.cpp
         src/searchServer.cpp
 )
-target_include_directories(search_engine_lib PUBLIC include)
+
+target_include_directories(search_engine_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_link_libraries(search_engine_lib PRIVATE  nlohmann_json::nlohmann_json)
 
 add_executable(search_engine src/main.cpp)
 target_link_libraries(search_engine PRIVATE search_engine_lib nlohmann_json::nlohmann_json)

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20260203-1050-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.31.6-msvc6"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="Oleg-PK"
+	OSRelease=" Professional"
+	OSVersion=" (Build 22631)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="15"
+	ModelID="4"
+	ModelName="AMD Ryzen 5 7535HS with Radeon Graphics        "
+	ProcessorCacheSize="64"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="19941"
+	TotalPhysicalMemory="15611"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3297"
+	>
+	<Testing>
+		<StartDateTime>Feb 03 17:50 RTZ 6 ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</StartDateTime>
+		<StartTestTime>1770115806</StartTestTime>
+		<TestList/>
+		<EndDateTime>Feb 03 17:50 RTZ 6 ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</EndDateTime>
+		<EndTestTime>1770115806</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

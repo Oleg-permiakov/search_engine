@@ -1,0 +1,56 @@
+[
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/src -I/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/nlohmann_json/include -O0 -g -Xclang -gcodeview -std=gnu++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\search_engine_lib.dir\\src\\ConverterJSON.cpp.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\ConverterJSON.cpp",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\ConverterJSON.cpp",
+  "output": "CMakeFiles\\search_engine_lib.dir\\src\\ConverterJSON.cpp.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/src -I/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/nlohmann_json/include -O0 -g -Xclang -gcodeview -std=gnu++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\search_engine_lib.dir\\src\\invertedIndex.cpp.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\invertedIndex.cpp",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\invertedIndex.cpp",
+  "output": "CMakeFiles\\search_engine_lib.dir\\src\\invertedIndex.cpp.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/src -I/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/nlohmann_json/include -O0 -g -Xclang -gcodeview -std=gnu++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\search_engine_lib.dir\\src\\searchServer.cpp.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\searchServer.cpp",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\searchServer.cpp",
+  "output": "CMakeFiles\\search_engine_lib.dir\\src\\searchServer.cpp.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -I/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/src -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/nlohmann_json/include -O0 -g -Xclang -gcodeview -std=gnu++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\search_engine.dir\\src\\main.cpp.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\main.cpp",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\src\\main.cpp",
+  "output": "CMakeFiles\\search_engine.dir\\src\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -I/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/src -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest/include -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest -O0 -g -Xclang -gcodeview -std=gnu++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\tests.dir\\tests\\test.cpp.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\tests\\test.cpp",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\tests\\test.cpp",
+  "output": "CMakeFiles\\tests.dir\\tests\\test.cpp.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -I/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googlemock/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googlemock -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest/include -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest -O0 -g -Xclang -gcodeview -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o _deps\\googletest-build\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googlemock\\src\\gmock-all.cc",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googlemock\\src\\gmock-all.cc",
+  "output": "_deps\\googletest-build\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -I/include -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googlemock/include -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googlemock -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest/include -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest -O0 -g -Xclang -gcodeview -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o _deps\\googletest-build\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googlemock\\src\\gmock_main.cc",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googlemock\\src\\gmock_main.cc",
+  "output": "_deps\\googletest-build\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -I/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest/include -IC:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest -O0 -g -Xclang -gcodeview -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o _deps\\googletest-build\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googletest\\src\\gtest-all.cc",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googletest\\src\\gtest-all.cc",
+  "output": "_deps\\googletest-build\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj"
+},
+{
+  "directory": "C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -I/include -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest/include -isystem C:/Users/Олег-ПК/Desktop/SkillBox/search_engine/build/_deps/googletest-src/googletest -O0 -g -Xclang -gcodeview -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o _deps\\googletest-build\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googletest\\src\\gtest_main.cc",
+  "file": "C:\\Users\\Олег-ПК\\Desktop\\SkillBox\\search_engine\\build\\_deps\\googletest-src\\googletest\\src\\gtest_main.cc",
+  "output": "_deps\\googletest-build\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj"
+}
+]
