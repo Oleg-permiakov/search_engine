@@ -2,9 +2,12 @@
 // Created by Oleg on 20.12.2025.
 //
 #include "invertedIndex.h"
+
+#include <iostream>
 #include <vector>
 #include <map>
 #include <sstream>
+#include <set>
 
 
 /**
@@ -14,9 +17,26 @@
 * input_docs получим через getTextDocument()
 */
 void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs) {
-    docs = input_docs;
-}
+    std::set<std::string> words;
+    for (auto &stringWord: input_docs) {
+        std::stringstream ss(stringWord);
+        std::string word;
+        while (ss >> word) {
+            words.insert(word);
+        }
+    }
+    for (auto stringWord: words) {
+        docs.push_back(stringWord);
+    }
 
+    std::pair<std::string, std::vector<Entry> > resultEntries;
+    for (const auto wordUnic: docs) {
+        resultEntries.first = wordUnic;
+        auto numEntry = GetWordCount(wordUnic, input_docs);
+        resultEntries.second = numEntry;
+        freq_dictionary.insert(resultEntries);
+    }
+}
 
 /*** Метод определяет количество вхождений слова word в загруженной базе
 документов
@@ -25,33 +45,30 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs) {
 * Загружается строка запросов
 *
 */
-std::vector<Entry> InvertedIndex::GetWordCount(const std::string &word) {
+std::vector<Entry> InvertedIndex::GetWordCount(std::string word, std::vector<std::string> input_docs) {
     Entry res;
-    std::vector<Entry> result;
-    size_t new_count = 0;
-    std::vector<std::string> docWords;
+    std::vector<Entry> resultEntries;
     /*прогнать по документам и найти количество совпадений слова*/
-    for (size_t i = 0; i < docs.size(); ++i) {
+    for (int i = 0; i < input_docs.size(); ++i) {
         std::string docWord;
-        std::stringstream ss(docs[i]);
+        size_t new_count = 0;
+        res.doc_id = i;
+        std::vector<std::string> words;
+        std::stringstream ss(input_docs[i]);
         while (ss >> docWord) {
-            docWords.push_back(docWord);
+            words.push_back(docWord);
         }
-        for (const auto &doc_word: docWords) {
-            if (doc_word == word) new_count++;
+        for (auto docWord: words) {
+            if (docWord == word) {
+                new_count++;
+            }
         }
-        if (new_count > 0) {
-            res.doc_id = i;
-            res.count = new_count;
-            result.push_back(res);
-        }
+        res.count = new_count;
+        resultEntries.push_back(res);
     }
-    std::pair<std::string, std::vector<Entry> > oPair(word, result);
-    freq_dictionary.insert(oPair);
-
-    return result;
+    return resultEntries;
 }
 
-std::map<std::string, std::vector<Entry> > InvertedIndex::getFreq_dictionary() {
+std::map<std::string, std::vector<Entry> > InvertedIndex::GetFreqDictionary() {
     return freq_dictionary;
 }

@@ -25,9 +25,10 @@ public:
 
     void UpdateDocumentBase(std::vector<std::string> input_docs);
 
-    std::vector<Entry> GetWordCount(const std::string &word);
+    std::vector<Entry> GetWordCount(std::string word, std::vector<std::string> input_docs);
 
-    std::map<std::string, std::vector<Entry>> getFreq_dictionary();
+    std::map<std::string, std::vector<Entry>> GetFreqDictionary();
+
 private:
     std::vector<std::string> docs; // список содержимого документов
     std::map<std::string, std::vector<Entry>> freq_dictionary; // частотный  словарь

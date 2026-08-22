@@ -43,16 +43,19 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() {
 
     std::vector<std::string> contentDocuments;
     std::string content;
+    std::string contentFull;
     std::vector<std::string> configPath = config["files"];
     for (auto &filePath: configPath) {
-        std::string strPath = filePath;
-        std::ifstream currentFile(strPath);
+        // std::string strPath = filePath;
+        std::ifstream currentFile(filePath);
         if (!currentFile.is_open()) {
             std::cout << "Could not open file" << std::endl;
         }
         while (currentFile >> content) {
-            contentDocuments.push_back(content);
+            contentFull = contentFull + " " + content;
         }
+contentDocuments.push_back(contentFull);
+        contentFull = "";
         currentFile.close();
     }
     return contentDocuments;
@@ -62,9 +65,10 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() {
 int ConverterJSON::GetResponsesLimit() {
     nlohmann::json config;
     std::ifstream file("../config.json");
+    // file.open("../config.json");
     file >> config;
     file.close();
-    int numberRequests = config["max_responses"];
+    int numberRequests = config["config"]["max_responses"];
     return numberRequests;
 }
 
