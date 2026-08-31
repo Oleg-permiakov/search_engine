@@ -10,6 +10,7 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <string>
+#include "searchServer.h"
 
 
 
@@ -23,7 +24,7 @@ public:
 
     std::vector<std::string> GetRequests();
 
-    void putAnswers(std::vector<std::vector<std::pair<int, float>>> ans);
+    void putAnswers(std::vector<std::vector<RelativeIndex>> ans);
 
 };
 

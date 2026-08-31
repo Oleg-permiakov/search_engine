@@ -20,7 +20,7 @@ int main() {
     auto rent = searcher.GetResponsesLimit(); /*колличество запросов*/
     std::cout << "Maximum number of request: " << rent << std::endl;
 
-    auto queries_input = searcher.GetRequests(); /*список запросов по словам*/
+    auto queries_input = searcher.GetRequests(); /*список запросов по строкам словам*/
     // for (auto i : queries_input) {
     //     std::cout << i << std::endl;
     // }
@@ -41,22 +41,20 @@ int main() {
     //     std::cout << std::endl;
     // }
 
-/*____________________________________________________________________________________________________*/
-    // SearchServer search_server(idx);
-    // auto result = search_server.search(queries_input);
-    //
-    // std::vector<std::vector<std::pair<int, float>>> ans;
-    // std::vector<std::pair<int, float>> vecAn;
-    // std::pair<int, float> an;
-    // for (auto &numVecDocs: result) {
-    //     for (auto relative_index: numVecDocs) {
-    //         an.first = relative_index.docs_id;
-    //         an.second = relative_index.rank;
-    //         vecAn.push_back(an);
+
+
+    SearchServer search_server(idx);
+    auto result = search_server.search(queries_input);
+
+    // for (auto rel: result) {
+    //     for (auto relative_index: rel) {
+    //         std::cout <<"{"<< relative_index.docs_id <<", "<<relative_index.rank<<"} ";
     //     }
-    //     ans.push_back(vecAn);
+    //     std::cout << std::endl;
     // }
-    // searcher.putAnswers(ans);
-    //
-    // return 0;
+
+    searcher.putAnswers(result);
+
+
+    return 0;
 }

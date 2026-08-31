@@ -77,26 +77,13 @@ int ConverterJSON::GetResponsesLimit() {
 * @return возвращает список запросов из файла requests.json
 */
 std::vector<std::string> ConverterJSON::GetRequests() {
-    std::string request;
-    std::vector<std::string> requests;
     std::vector<std::string> queries_input;
     nlohmann::json req;
     std::ifstream fileRequest("../requests.json");
     fileRequest >> req;
     fileRequest.close();
     for (auto &stringWord: req["requests"]) {
-        requests.push_back(stringWord);
-    }
-        std::set<std::string> words;
-    for (auto &stringWord: requests) {
-        std::stringstream ss(stringWord);
-        std::string word;
-        while (ss >> word) {
-            words.insert(word);
-        }
-    }
-    for (const auto &word: words) {
-        queries_input.push_back(word);
+        queries_input.push_back(stringWord);
     }
     return queries_input;
 }
@@ -105,29 +92,28 @@ std::vector<std::string> ConverterJSON::GetRequests() {
 * Положить в файл answers.json результаты поисковых запросов
 */
 
-void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float> > > ans) {
+void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>> ans) {
     nlohmann::json answer;
-    nlohmann::json relev;
-    nlohmann::json request;
     std::string strResult;
     std::stringstream ss;
 
     bool requestSearh = true;
 
-    for (int i = 0; i < ans.size(); i++) {
-        if (!(ans[i].empty())) {
-            requestSearh = true;
-            for (int j = 0; j < ans[i].size(); ++j) {
-                relev = {{"docid", ans[i][j].first}, {"rank", ans[i][j].second}};
-            }
-        } else {
-            requestSearh = false;
-        }
-        ss << std::setw(3) << std::setfill('0') << (i + 1);
-        strResult = "request" + ss.str();
-        request = {{"result", requestSearh}, {strResult, relev}};
-        answer = {"answers", request};
-    }
+
+    // for (int i = 0; i < ans.size(); i++) {
+    //     if (!(ans[i].empty())) {
+    //         requestSearh = true;
+    //         for (int j = 0; j < ans[i].size(); ++j) {
+    //             relev = {{"docid", ans[i][j].docs_id}, {"rank", ans[i][j].rank}};
+    //         }
+    //     } else {
+    //         requestSearh = false;
+    //     }
+    //     ss << std::setw(3) << std::setfill('0') << (i + 1);
+    //     strResult = "request" + ss.str();
+    //     request = {{"result", requestSearh}, {strResult, relev}};
+    //     answer = {"answers", request};
+    // }
     std::ofstream fileAnswers("../answers.json");
     if (fileAnswers.is_open()) {
         fileAnswers.close();

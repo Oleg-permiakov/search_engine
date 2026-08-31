@@ -4,10 +4,14 @@
 #include "searchServer.h"
 #include "invertedIndex.h"
 #include <algorithm>
+#include <iostream>
 #include <iterator>
 #include <sstream>
 #include <map>
 #include <utility>
+#include <set>
+
+#include "ConverterJSON.h"
 
 
 /**
@@ -16,9 +20,9 @@
     * чтобы SearchServer мог узнать частоту слов встречаемых в
     запросе
     */
-// SearchServer::SearchServer(InvertedIndex &idx) : _index(idx) {
-// }
-//
+SearchServer::SearchServer(InvertedIndex &idx) : _index(idx) {
+}
+
 // /**
 //    * Метод обработки поисковых запросов
 //    * @param queries_input поисковые запросы взятые из файла
@@ -26,33 +30,59 @@
 //    * @return возвращает отсортированный список релевантных ответов для
 //    заданных запросов
 //    */
-// std::vector<std::vector<RelativeIndex> > SearchServer::search(const std::vector<std::string> &queries_input) {
-//     auto freq_dict = _index.getFreq_dictionary();
-//     std::vector<RelativeIndex> genIndex;
-//     std::vector<std::vector<RelativeIndex> > answer;
-//
-//     for (int i = 0; i < queries_input.size(); ++i) {
-//         for (auto it = freq_dict.begin(); it != freq_dict.end(); ++it) {
-//             if (it->first == queries_input[i] && !(it->second.empty())) {
-//                 auto freq = it->second;
-//                 for (const auto &value: freq) {
-//                     genIndex.resize(genIndex.size() + 1);
-//                     genIndex[value.doc_id].docs_id = value.doc_id;
-//                     genIndex[value.doc_id].rank = genIndex[value.doc_id].rank + value.count;
-//                 }
-//             }
-//         }
-//         std::vector<float> numberRank;
-//         for (int i = 0; i < genIndex.size(); ++i) {
-//             numberRank.push_back(genIndex[i].rank);
-//         }
-//         auto max_iterator = std::max_element(numberRank.begin(), numberRank.end());
-//         auto maxNumIndex = *max_iterator;
-//         for (auto &gen_index: genIndex) {
-//             gen_index.rank = gen_index.rank / maxNumIndex;
-//         }
-//         answer.push_back(genIndex);
-//     }
-//
-//     return answer;
-// }
+std::vector<std::vector<RelativeIndex> > SearchServer::search(const std::vector<std::string> &queries_input) {
+    auto dict = _index.GetFreqDictionary();
+    ConverterJSON converter;
+    RelativeIndex genIndex;
+    std::vector<RelativeIndex> genIndexes;
+    std::vector<std::vector<RelativeIndex> > result;
+    Entry queryEntr;
+    std::vector<Entry> queryEntres;
+    float genRank; /*наибольшее значение совпадений*/
+
+    if (converter.GetResponsesLimit() <= queries_input.size()) {
+        for (const auto &query: queries_input) {
+            genRank = 1;
+            genIndexes.clear();
+            std::set<std::string> queryWords;
+            std::string querryWord;
+            std::stringstream ss(query);
+            while (ss >> querryWord) {
+                queryWords.insert(querryWord);
+            }
+
+            if (!dict.empty()) {
+                for (int i = 0; i < dict.begin()->second.size(); ++i) {
+                    queryEntr.doc_id = i, queryEntr.count = 0;
+                    queryEntres.push_back(queryEntr);
+                }
+            }
+
+            for (const auto &word: queryWords) {
+                /*смотрим в map как делается запрос по ключу*/
+                if (dict.count(word) > 0) {
+                    for (int i = 0; i < dict.at(word).size(); i++) {
+                        if (dict.at(word)[i].doc_id == i && queryEntres[i].doc_id == i) {
+                            queryEntres[i].doc_id = i;
+                            queryEntres[i].count += dict.at(word)[i].count;
+                            if (queryEntres[i].count > genRank) {
+                                genRank = queryEntres[i].count;
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (auto &queryEntr: queryEntres) {
+                genIndex.docs_id = queryEntr.doc_id;
+                genIndex.rank = (queryEntr.count) / genRank;
+                genIndexes.push_back(genIndex);
+            }
+            queryEntres.clear();
+            result.push_back(genIndexes);
+        }
+    } else {
+        std::cout << "The number of requests exceeds the limit" << std::endl;
+    }
+    return result;
+}
