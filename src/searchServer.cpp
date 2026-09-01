@@ -80,21 +80,16 @@ std::vector<std::vector<RelativeIndex> > SearchServer::search(const std::vector<
                 genIndexes.push_back(genIndex);
             }
             queryEntres.clear();
-            for (int i = 0; i < genIndexes.size(); i++) {
-                if (genIndexes[i].rank == 0) {
-                    genIndexes.erase(genIndexes.begin() + i);
+
+            for (auto gen_index: genIndexes) {
+                if (gen_index.rank != 0) {
+                    genIndexes1.push_back(gen_index);
                 }
             }
-
-            result.push_back(genIndexes);
+            genIndexes.clear();
+            result.push_back(genIndexes1);
+            genIndexes1.clear();
         }
-        // for (auto gen_indexes: result) {
-        //     for (int i = 0; i < gen_indexes.size(); i++) {
-        //         if (gen_indexes[i].rank == 0) {
-        //             gen_indexes.erase(gen_indexes.begin() + i);
-        //         }
-        //     }
-        // }
     } else {
         std::cout << "The number of requests exceeds the limit" << std::endl;
     }
