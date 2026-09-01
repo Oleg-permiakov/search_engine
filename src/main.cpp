@@ -46,12 +46,12 @@ int main() {
     SearchServer search_server(idx);
     auto result = search_server.search(queries_input);
 
-    // for (auto rel: result) {
-    //     for (auto relative_index: rel) {
-    //         std::cout <<"{"<< relative_index.docs_id <<", "<<relative_index.rank<<"} ";
-    //     }
-    //     std::cout << std::endl;
-    // }
+    for (auto rel: result) {
+        for (auto relative_index: rel) {
+            std::cout <<"{"<< relative_index.docs_id <<", "<<relative_index.rank<<"} ";
+        }
+        std::cout << std::endl;
+    }
 
     searcher.putAnswers(result);
 
