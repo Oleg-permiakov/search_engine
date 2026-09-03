@@ -3,25 +3,23 @@
 //
 
 
-
 #include "ConverterJSON.h"
-#include <nlohmann/json.hpp>
-#include <iostream>
-#include <vector>
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
-#include <sstream>
-#include <filesystem>
+#include <iostream>
+#include <nlohmann/json.hpp>
 #include <set>
+#include <sstream>
 #include <string>
-
+#include <vector>
 
 
 /**
-* Метод получения содержимого файлов
-* @return Возвращает список с содержимым файлов перечисленных
-* в config.json
-*/
+ * Метод получения содержимого файлов
+ * @return Возвращает список с содержимым файлов перечисленных
+ * в config.json
+ */
 
 std::vector<std::string> ConverterJSON::GetTextDocuments() {
     nlohmann::json config;
@@ -54,7 +52,7 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() {
         while (currentFile >> content) {
             contentFull = contentFull + " " + content;
         }
-contentDocuments.push_back(contentFull);
+        contentDocuments.push_back(contentFull);
         contentFull = "";
         currentFile.close();
     }
@@ -73,9 +71,9 @@ int ConverterJSON::GetResponsesLimit() {
 }
 
 /**
-* Метод получения запросов из файла requests.json
-* @return возвращает список запросов из файла requests.json
-*/
+ * Метод получения запросов из файла requests.json
+ * @return возвращает список запросов из файла requests.json
+ */
 std::vector<std::string> ConverterJSON::GetRequests() {
     std::vector<std::string> queries_input;
     nlohmann::json req;
@@ -89,31 +87,51 @@ std::vector<std::string> ConverterJSON::GetRequests() {
 }
 
 /**
-* Положить в файл answers.json результаты поисковых запросов
-*/
+ * Положить в файл answers.json результаты поисковых запросов
+ */
+
+/*
+* {
+"answers": {
+"request001": {
+"result": "true",
+"relevance": [
+{ "docid": 0, "rank": 0.989 },
+{ "docid": 1, "rank": 0.897 },
+{ "docid": 2, "rank": 0.750 }
+]
+},"request002": {
+"result": "true",
+"relevance": [
+{ "docid": 0, "rank": 0.769 }
+]
+},
+"request003": {
+"result": "false"
+}
+}
+}
+ */
 
 void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>> ans) {
     nlohmann::json answer;
-    std::string strResult;
+    nlohmann::json relivan;
+    std::string strRequest;
     std::stringstream ss;
-
-    bool requestSearh = true;
-
-
-    // for (int i = 0; i < ans.size(); i++) {
-    //     if (!(ans[i].empty())) {
-    //         requestSearh = true;
-    //         for (int j = 0; j < ans[i].size(); ++j) {
-    //             relev = {{"docid", ans[i][j].docs_id}, {"rank", ans[i][j].rank}};
-    //         }
-    //     } else {
-    //         requestSearh = false;
-    //     }
-    //     ss << std::setw(3) << std::setfill('0') << (i + 1);
-    //     strResult = "request" + ss.str();
-    //     request = {{"result", requestSearh}, {strResult, relev}};
-    //     answer = {"answers", request};
-    // }
+    for (int i = 0; i < ans.size(); ++i) {
+        ss << std::setw(3) << std::setfill('0') << (i + 1);
+        strRequest = "request" + ss.str();
+        answer["answers"] = strRequest;
+        for (int j = 0; j < ans[i].size(); ++j) {
+            if (!ans[i].empty()) {
+                answer[strRequest]["result"] = "true";
+                answer[strRequest]["relevance"] = nlohmann::json::array();
+                relivan["docid"] = ans[i][j].docs_id;
+                relivan["rank"] = ans[i][j].rank;
+                answer[strRequest]["relevance"].push_back(relivan);
+            } else answer[strRequest]["result"] = "false";
+        }
+    }
     std::ofstream fileAnswers("../answers.json");
     if (fileAnswers.is_open()) {
         fileAnswers.close();
