@@ -1,12 +1,11 @@
+#include <fstream>
 #include <iostream>
+#include <nlohmann/json.hpp>
 #include <string>
-#include "ConverterJSON.h"
 #include <vector>
+#include "ConverterJSON.h"
 #include "invertedIndex.h"
 #include "searchServer.h"
-#include <nlohmann/json.hpp>
-#include <fstream>
-
 
 
 int main() {
@@ -27,7 +26,7 @@ int main() {
     searcher.putAnswers(result);
 
     std::string str;
-    std::cout << "For continuation, end of the program press any symbol ";
+    std::cout << "For continuation, end of the program press any symbol" << std::endl;
     std::cin >> str;
 
     return 0;
