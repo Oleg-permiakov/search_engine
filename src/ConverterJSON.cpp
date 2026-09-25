@@ -121,21 +121,24 @@ void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>> ans) {
     for (int i = 0; i < ans.size(); ++i) {
         ss << std::setw(3) << std::setfill('0') << (i + 1);
         strRequest = "request" + ss.str();
-        answer["answers"] = strRequest;
-        answer[strRequest]["relevance"] = nlohmann::json::array();
+        ss.str("");
+        answer["answers"][strRequest]["relevance"] = nlohmann::json::array();
         for (int j = 0; j < ans[i].size(); ++j) {
+
             if (!ans[i].empty()) {
-                answer[strRequest]["result"] = "true";
+                answer["answers"][strRequest]["result"] = "true";
                 relivan["docid"] = ans[i][j].docs_id;
                 relivan["rank"] = ans[i][j].rank;
-                answer[strRequest]["relevance"].push_back(relivan);
-            } else answer[strRequest]["result"] = "false";
+                answer["answers"][strRequest]["relevance"].push_back(relivan);
+            }
+        }
+        if (answer["answers"][strRequest]["relevance"].empty()) {
+            answer["answers"][strRequest].clear();
+            answer["answers"][strRequest]["result"] = "false";
         }
     }
+
     std::ofstream fileAnswers("../answers.json");
-    if (fileAnswers.is_open()) {
-        fileAnswers.close();
-    }
     fileAnswers << answer;
     fileAnswers.close();
 }
