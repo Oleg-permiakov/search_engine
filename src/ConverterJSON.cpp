@@ -139,6 +139,6 @@ void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>> ans) {
     }
 
     std::ofstream fileAnswers("../answers.json");
-    fileAnswers << answer;
+    fileAnswers <<std::setw(4)<< answer;
     fileAnswers.close();
 }

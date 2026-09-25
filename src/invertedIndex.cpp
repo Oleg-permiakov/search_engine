@@ -25,12 +25,12 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs) {
             words.insert(word);
         }
     }
-    for (auto stringWord: words) {
+    for (const auto &stringWord: words) {
         docs.push_back(stringWord);
     }
 
     std::pair<std::string, std::vector<Entry> > resultEntries;
-    for (const auto wordUnic: docs) {
+    for (const auto &wordUnic: docs) {
         resultEntries.first = wordUnic;
         auto numEntry = GetWordCount(wordUnic, input_docs);
         resultEntries.second = numEntry;
