@@ -45,7 +45,7 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs) {
 * Загружается строка запросов
 *
 */
-std::vector<Entry> InvertedIndex::GetWordCount(std::string word, std::vector<std::string> input_docs) {
+std::vector<Entry> InvertedIndex::GetWordCount(const std::string word, std::vector<std::string> input_docs) {
     Entry res;
     std::vector<Entry> resultEntries;
     /*прогнать по документам и найти количество совпадений слова*/

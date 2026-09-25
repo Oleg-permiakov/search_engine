@@ -7,10 +7,6 @@
 
 
 
-TEST(sample_test_case, sample_test)
-{
-    EXPECT_EQ(1, 1);
-}
 
 void TestInvertedIndexFunctionality(
     const std::vector<std::string> &docs,
