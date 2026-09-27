@@ -9,6 +9,17 @@
 
 
 int main() {
+    nlohmann::json config;
+    std::ifstream config_file("../config.json");
+    config_file >> config;
+    const std::string nameStart = config["config"]["name"];
+    if (config["config"]["version"] == "0.1") {
+        std::cout << nameStart << std::endl;
+    } else {
+        std::cout << "The correct version is started not" << std::endl;
+    }
+
+
     ConverterJSON searcher;
     auto input_docs = searcher.GetTextDocuments(); /*обновление текста документов*/
 

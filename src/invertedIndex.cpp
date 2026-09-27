@@ -9,6 +9,8 @@
 #include <sstream>
 #include <set>
 
+#include "ConverterJSON.h"
+
 
 /**
 * Обновить или заполнить базу документов, по которой будем совершать
@@ -32,7 +34,7 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs) {
     std::pair<std::string, std::vector<Entry> > resultEntries;
     for (const auto &wordUnic: docs) {
         resultEntries.first = wordUnic;
-        auto numEntry = GetWordCount(wordUnic, input_docs);
+        auto numEntry = GetWordCount(wordUnic);
         resultEntries.second = numEntry;
         freq_dictionary.insert(resultEntries);
     }
@@ -45,8 +47,10 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs) {
 * Загружается строка запросов
 *
 */
-std::vector<Entry> InvertedIndex::GetWordCount(const std::string word, std::vector<std::string> input_docs) {
+std::vector<Entry> InvertedIndex::GetWordCount(const std::string word) {
     Entry res;
+    ConverterJSON converter;
+    auto input_docs = converter.GetTextDocuments();
     std::vector<Entry> resultEntries;
     /*прогнать по документам и найти количество совпадений слова*/
     for (int i = 0; i < input_docs.size(); ++i) {

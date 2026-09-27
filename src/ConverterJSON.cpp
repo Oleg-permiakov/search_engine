@@ -9,7 +9,6 @@
 #include <iomanip>
 #include <iostream>
 #include <nlohmann/json.hpp>
-#include <set>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -36,15 +35,13 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() {
         throw std::invalid_argument("config.json has incorrect file version");
     }
 
-    const std::string nameStart = config["config"]["name"];
-    std::cout << nameStart << std::endl;
+
 
     std::vector<std::string> contentDocuments;
     std::string content;
     std::string contentFull;
     std::vector<std::string> configPath = config["files"];
-    for (auto &filePath: configPath) {
-        // std::string strPath = filePath;
+    for (const auto &filePath: configPath) {
         std::ifstream currentFile(filePath);
         if (!currentFile.is_open()) {
             std::cout << "Could not open file" << std::endl;
@@ -63,7 +60,6 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() {
 int ConverterJSON::GetResponsesLimit() {
     nlohmann::json config;
     std::ifstream file("../config.json");
-    // file.open("../config.json");
     file >> config;
     file.close();
     int numberRequests = config["config"]["max_responses"];
@@ -88,29 +84,6 @@ std::vector<std::string> ConverterJSON::GetRequests() {
 
 /**
  * Положить в файл answers.json результаты поисковых запросов
- */
-
-/*
-* {
-"answers": {
-"request001": {
-"result": "true",
-"relevance": [
-{ "docid": 0, "rank": 0.989 },
-{ "docid": 1, "rank": 0.897 },
-{ "docid": 2, "rank": 0.750 }
-]
-},"request002": {
-"result": "true",
-"relevance": [
-{ "docid": 0, "rank": 0.769 }
-]
-},
-"request003": {
-"result": "false"
-}
-}
-}
  */
 
 void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>> ans) {
